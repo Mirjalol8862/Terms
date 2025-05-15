@@ -199,3 +199,50 @@ a {
 }
 
 /* DevLangues - End */
+
+/* Start - Start */
+
+.start-row{
+    background-color: #00838f;
+}
+
+.start-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 30px;
+}
+
+.start-title {
+    font-family: "Kanit", sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 110%;
+    text-align: center;
+    color: #000;
+}
+
+.start-card{
+    width: 100%;
+    padding: 8px 12px 8px 15px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #efefef;
+}
+
+.start-card_icon{
+    width: 24px;
+    height: 24px;
+}
+
+.start-list{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    row-gap: 16px;
+}
+
+/* Start - End */
