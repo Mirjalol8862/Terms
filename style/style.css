@@ -199,6 +199,7 @@ a {
 
 /* Start - Start */
 
+
 .start-row{
 }
 
@@ -207,6 +208,20 @@ a {
     align-items: center;
     justify-content: space-between;
     padding: 20px 0;
+}
+
+.start-top_icon{
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease-in;
+}
+
+.start-top_icon:hover{
+    box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
+    border-radius: 10px;
 }
 
 .start-title {
@@ -226,6 +241,10 @@ a {
     align-items: center;
     justify-content: space-between;
     background-color: #efefef;
+}
+
+.start-card:hover{
+    box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
 }
 
 .start-card:nth-last-of-type(1){
