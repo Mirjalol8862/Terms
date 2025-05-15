@@ -228,6 +228,11 @@ a {
     background-color: #efefef;
 }
 
+.start-card:nth-last-of-type(1){
+    background-color: #ffa625;
+    color: white;
+}
+
 .start-card_icon{
     width: 24px;
     height: 24px;
