@@ -101,6 +101,8 @@ a {
     line-height: 110%;
     text-align: center;
     color: var(--black-color);
+    padding-bottom: 20px;
+    border-bottom: 1px solid #efefef;
 }
 
 .devlangues-list {
@@ -205,7 +207,9 @@ a {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px 0 40px 0;
+    border-bottom: 1px solid #efefef;
+    padding: 20px 0;
+    margin-bottom: 30px;
 }
 
 .start-top_icon {
@@ -295,11 +299,11 @@ a {
 
 /* Catalog - Start */
 
-.catalog-bottom__title:last-child{
+.catalog-bottom__title:last-child {
     margin-bottom: 30px;
 }
 
-.catalog-row{
+.catalog-row {
     padding-bottom: 30px;
 }
 
@@ -354,7 +358,7 @@ a {
     justify-content: center;
 }
 
-.catalog-test{
+.catalog-test {
     width: 100%;
     padding: 21px 0;
     background-color: #4cb800;
