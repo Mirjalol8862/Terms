@@ -349,4 +349,10 @@ a {
     justify-content: center;
 }
 
+.catalog-test{
+    width: 100%;
+    padding: 21px 0;
+    background-color: #4cb800;
+}
+
 /* Catalog - End */
