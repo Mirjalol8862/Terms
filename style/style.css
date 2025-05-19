@@ -295,8 +295,8 @@ a {
 
 /* Catalog - Start */
 
-.catalog-bottom {
-    margin-bottom: 30px;
+.catalog-row{
+    padding-bottom: 30px;
 }
 
 .catalog-bottom__title {
