@@ -295,12 +295,16 @@ a {
 
 /* Catalog - Start */
 
+.catalog-bottom__title:last-child{
+    margin-bottom: 30px;
+}
+
 .catalog-row{
     padding-bottom: 30px;
 }
 
 .catalog-bottom__title {
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     font-weight: 500;
     font-size: 16px;
     color: #000;
