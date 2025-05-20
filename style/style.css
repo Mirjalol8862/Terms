@@ -364,4 +364,8 @@ a {
     background-color: #4cb800;
 }
 
+.results {
+    display: flex;
+    flex-direction: column;
+}
 /* Catalog - End */

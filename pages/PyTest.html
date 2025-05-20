@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Python Test</title>
+  <link rel="stylesheet" href="../style/style.css">
   <style>
     * { box-sizing: border-box; }
     body { margin: 0; font-family: sans-serif; background: #111; }
@@ -27,6 +28,7 @@
       font-size: 16px;
       margin-bottom: 20px;
     }
+  
     .options label {
       display: block;
       background: #f4f4f4;
@@ -63,6 +65,11 @@
       width: 80px;
       font-size: 14px;
     }
+
+    .pytest{
+        display: flex;
+        flex-direction: column;
+    }
   </style>
 </head>
 <body>
@@ -72,9 +79,9 @@
       <span id="timer">20:00</span>
     </div>
     <div id="questionBox"></div>
-    <div id="optionsBox"></div>
+    <div class="pytest" id="optionsBox"></div>
     <button class="btn" id="nextBtn">Keyingisi</button>
-    <div class="results" id="resultsBox" style="display:none">
+    <div class="results" id="resultsBox">
       <div class="stats">
         <div class="stat" id="correctStat">%</div>
         <div class="stat" id="timeStat">⏱️</div>
@@ -86,31 +93,21 @@
 
   <script>
     const questions = [
-      { question: "Ma'lumot saqlash uchun nima ishlatiladi?", answers: ["Variable", "Object", "Function", "Indentation"], correct: "Variable" },
-      { question: "Class asosida yaratilgan instansiyaga nima deyiladi?", answers: ["Object", "Function", "Set", "Constructor"], correct: "Object" },
-      { question: "O‘zgarmaydigan qiymat nima?", answers: ["Constant", "Return", "Variable", "Abstraction"], correct: "Constant" },
-      { question: "Ma'lumot turlari to‘g‘ri ko‘rsatilgan qator?", answers: ["int, float, string, bool", "tuple, set, list", "method, return", "object, function"], correct: "int, float, string, bool" },
-      { question: "Kod bloklarini ajratish uchun nima ishlatiladi?", answers: ["Indentation", "Comment", "Method", "Raise"], correct: "Indentation" },
-      { question: "Funktsiyaga uzatiladigan argument nima deyiladi?", answers: ["Parameter", "Return", "Variable", "List"], correct: "Parameter" },
-      { question: "Funksiya natijasini chiqaruvchi operator?", answers: ["Return", "Function", "Class", "Open"], correct: "Return" },
-      { question: "Kodga izoh yozish uchun nima ishlatiladi?", answers: ["Comment", "Raise", "Return", "Indentation"], correct: "Comment" },
-      { question: "Elementlar ketma-ketligi nima?", answers: ["List", "Set", "Dictionary", "Constructor"], correct: "List" },
-      { question: "O‘zgarmas elementlar ketma-ketligi nima?", answers: ["Tuple", "Set", "Object", "Method"], correct: "Tuple" },
-      { question: "Takrorlanmaydigan elementlar to‘plami?", answers: ["Set", "List", "Tuple", "Class"], correct: "Set" },
-      { question: "Kalit-qiymat juftliklari qanday saqlanadi?", answers: ["Dictionary", "Set", "Class", "Object"], correct: "Dictionary" },
-      { question: "Class ichidagi funksiyalar nima?", answers: ["Method", "Return", "Tuple", "Raise"], correct: "Method" },
-      { question: "__init__ nima?", answers: ["Constructor", "Parameter", "Comment", "Object"], correct: "Constructor" },
-      { question: "Boshqa class xususiyatlarini olish nima deyiladi?", answers: ["Inheritance", "Encapsulation", "Polymorphism", "Method"], correct: "Inheritance" },
-      { question: "Ma'lumotlarni yashirish nima?", answers: ["Encapsulation", "Abstraction", "Return", "Class"], correct: "Encapsulation" },
-      { question: "Bir xil metod turli classlarda ishlatilsa nima deyiladi?", answers: ["Polymorphism", "Abstraction", "Constructor", "Inheritance"], correct: "Polymorphism" },
-      { question: "Faqat kerakli funksiyalarni taqdim etish nima?", answers: ["Abstraction", "Encapsulation", "List", "Tuple"], correct: "Abstraction" },
-      { question: "Faylni ochish uchun qaysi funksiya?", answers: ["Open()", "Close()", "Read()", "Write()"], correct: "Open()" },
-      { question: "Fayldan o‘qish uchun?", answers: ["Read()", "Write()", "Open()", "With()"], correct: "Read()" },
-      { question: "Faylga yozish uchun?", answers: ["Write()", "Read()", "Open()", "Close()"], correct: "Write()" },
-      { question: "Faylni yopish uchun?", answers: ["Close()", "Open()", "With()", "Raise"], correct: "Close()" },
-      { question: "Fayl bilan xavfsiz ishlash usuli?", answers: ["With open() as", "Try", "Except", "Raise"], correct: "With open() as" },
-      { question: "Xatoliklarni ushlash uchun?", answers: ["try-except", "raise", "finally", "read"], correct: "try-except" },
-      { question: "Maxsus xatolikni chiqarish uchun?", answers: ["raise", "try", "finally", "open"], correct: "raise" }
+      {
+        question: "Python'da ma'lumot saqlash uchun nima ishlatiladi?",
+        answers: ["Variable", "Object", "Function", "Indentation"],
+        correct: "Variable"
+      },
+      {
+        question: "Class ichidagi funksiyalarga nima deyiladi?",
+        answers: ["Method", "Return", "Tuple", "Raise"],
+        correct: "Method"
+      },
+      {
+        question: "Xatoliklarni ushlash uchun qaysi blok ishlatiladi?",
+        answers: ["try-except", "finally", "raise", "read"],
+        correct: "try-except"
+      }
     ];
 
     function shuffle(array) {
@@ -180,13 +177,6 @@
       document.getElementById("correctStat").innerHTML = `<strong>${score}%</strong><br>Natija`;
       document.getElementById("wrongStat").innerHTML = `<strong>${wrongCount}</strong><br>Xato`;
       document.getElementById("timeStat").innerHTML = `<strong>${minutes}:${seconds.toString().padStart(2, '0')}</strong><br>Vaqt`;
-
-      const restartBtn = resultsBox.querySelector("button");
-      if (score >= 70) {
-        restartBtn.textContent = "✅ Yaxshi ish! Qayta topshirmoqchimisiz?";
-      } else {
-        restartBtn.textContent = "❌ Yana urinib ko‘ring";
-      }
     }
 
     // Taymer
