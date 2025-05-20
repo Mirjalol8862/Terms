@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: sans-serif; background: #111; }
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      margin-top: 30px;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      font-weight: bold;
+      color: #333;
+    }
+    .question {
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+    .options label {
+      display: block;
+      background: #f4f4f4;
+      padding: 10px;
+      border-radius: 6px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      border: 1px solid #ccc;
+    }
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background: #007b7f;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .results {
+      text-align: center;
+    }
+    .stats {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 20px;
+    }
+    .stat {
+      background: #f4f4f4;
+      border-radius: 10px;
+      padding: 10px;
+      width: 80px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <span>Test</span>
+      <span id="timer">20:00</span>
+    </div>
+    <div id="questionBox"></div>
+    <div id="optionsBox"></div>
+    <button class="btn" id="nextBtn">Keyingisi</button>
+    <div class="results" id="resultsBox" style="display:none">
+      <div class="stats">
+        <div class="stat" id="correctStat">%</div>
+        <div class="stat" id="timeStat">⏱️</div>
+        <div class="stat" id="wrongStat">❌</div>
+      </div>
+      <button class="btn" onclick="location.reload()">Qayta topshirish</button>
+    </div>
+  </div>
+
+  <script>
+    const questions = [
+      {
+        question: "JavaScriptda o'zgaruvchi e'lon qilish uchun qaysi kalit so'z ishlatiladi?",
+        answers: ["var", "def", "function", "include"],
+        correct: "var"
+      },
+      {
+        question: "JavaScriptda funksiya qanday aniqlanadi?",
+        answers: ["function", "def", "lambda", "fn"],
+        correct: "function"
+      },
+      {
+        question: "Qaysi biri massivni bildiradi?",
+        answers: ["{}", "()", "[]", "<>",],
+        correct: "[]"
+      }
+    ];
+
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
+
+    shuffle(questions);
+
+    let current = 0;
+    let correctCount = 0;
+    let wrongCount = 0;
+    let startTime = Date.now();
+
+    const questionBox = document.getElementById("questionBox");
+    const optionsBox = document.getElementById("optionsBox");
+    const nextBtn = document.getElementById("nextBtn");
+    const resultsBox = document.getElementById("resultsBox");
+    const timerElement = document.getElementById("timer");
+
+    function showQuestion() {
+      const q = questions[current];
+      questionBox.innerHTML = `<div class="question">${current + 1}. ${q.question}</div>`;
+      optionsBox.innerHTML = "";
+      const shuffledAnswers = [...q.answers];
+      shuffle(shuffledAnswers);
+      shuffledAnswers.forEach(answer => {
+        const label = document.createElement("label");
+        const input = document.createElement("input");
+        input.type = "radio";
+        input.name = "option";
+        input.value = answer;
+        label.appendChild(input);
+        label.append(` ${answer}`);
+        optionsBox.appendChild(label);
+      });
+      nextBtn.textContent = current === questions.length - 1 ? "Yakunlash" : "Keyingisi";
+    }
+
+    nextBtn.addEventListener("click", () => {
+      const selected = document.querySelector("input[name='option']:checked");
+      if (!selected) return alert("Iltimos, variantni tanlang!");
+      if (selected.value === questions[current].correct) correctCount++;
+      else wrongCount++;
+      current++;
+      if (current < questions.length) {
+        showQuestion();
+      } else {
+        finishTest();
+      }
+    });
+
+    function finishTest() {
+      clearInterval(timerInterval);
+      const totalTime = Math.floor((Date.now() - startTime) / 1000);
+      const minutes = Math.floor(totalTime / 60);
+      const seconds = totalTime % 60;
+      const score = Math.round((correctCount / questions.length) * 100);
+
+      questionBox.style.display = "none";
+      optionsBox.style.display = "none";
+      nextBtn.style.display = "none";
+      resultsBox.style.display = "block";
+
+      document.getElementById("correctStat").innerHTML = `<strong>${score}%</strong><br>Natija`;
+      document.getElementById("wrongStat").innerHTML = `<strong>${wrongCount}</strong><br>Xato`;
+      document.getElementById("timeStat").innerHTML = `<strong>${minutes}:${seconds.toString().padStart(2, '0')}</strong><br>Vaqt`;
+    }
+
+    // Taymer
+    let totalSeconds = 20 * 60;
+    const timerInterval = setInterval(() => {
+      totalSeconds--;
+      const min = Math.floor(totalSeconds / 60);
+      const sec = totalSeconds % 60;
+      timerElement.textContent = `${min}:${sec.toString().padStart(2, '0')}`;
+      if (totalSeconds <= 0) {
+        finishTest();
+      }
+    }, 1000);
+
+    showQuestion();
+  </script>
+</body>
+</html>
