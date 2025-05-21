@@ -1,0 +1,141 @@
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #fff;
+  margin: 0;
+  padding: 0;
+  color: #000;
+}
+
+.container {
+  padding: 16px;
+  max-width: 400px;
+  margin: auto;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.topbar .back {
+  font-size: 20px;
+  cursor: pointer;
+  margin-right: 16px;
+}
+
+.topbar h1 {
+  font-size: 22px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.stat {
+  flex: 1;
+  border-radius: 12px;
+  padding: 12px;
+  text-align: center;
+  color: #fff;
+  margin: 0 4px;
+}
+
+.green { background-color: #6cc24a; }
+.blue { background-color: #2e9de4; }
+.red { background-color: #f44336; }
+
+.stat .value {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.stat .label {
+  font-size: 14px;
+}
+
+.tabs {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 16px;
+}
+
+.tabs button {
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #6cc24a;
+  background-color: #fff;
+  color: #6cc24a;
+  border-radius: 10px;
+  cursor: pointer;
+  margin: 0 4px;
+  transition: background-color 0.3s;
+}
+
+.tabs button.active,
+.tabs button:hover {
+  background-color: #6cc24a;
+  color: #fff;
+}
+
+.results {
+  margin-bottom: 20px;
+}
+
+.result-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+}
+
+.result-item .left {
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  background-color: #5da8dc;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.name-time {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+}
+
+.score {
+  font-weight: bold;
+  color: #f9a825;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.retake {
+  width: 100%;
+  background-color: #007b8f;
+  color: white;
+  padding: 14px;
+  font-size: 16px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+}

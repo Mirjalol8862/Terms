@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Natijalar</title>
+  <link rel="stylesheet" href="../style/resus.css">
+</head>
+<body>
+  <div class="container">
+    <div class="topbar">
+      <div class="back" onclick="goBack()">←</div>
+      <h1>Natijalar</h1>
+    </div>
+
+    <div class="stats" id="mainStats">
+      <div class="stat green">
+        <div class="value" id="foizi">60</div>
+        <div class="label">Foizi</div>
+      </div>
+      <div class="stat blue">
+        <div class="value" id="daqiqa">10:51</div>
+        <div class="label">Daqiqa</div>
+      </div>
+      <div class="stat red">
+        <div class="value" id="xatolar">10</div>
+        <div class="label">Xatolar</div>
+      </div>
+    </div>
+
+    <div class="tabs">
+      <button class="active" onclick="showFinal()" id="finalBtn">Yakuniy test</button>
+      <button onclick="showIntermediate()" id="intermediateBtn">Oraliq test</button>
+    </div>
+
+    <div class="results" id="resultsList">
+      <!-- Results injected via JS -->
+    </div>
+
+    <button class="retake" onclick="retakeTest()">Qayta topshirish</button>
+  </div>
+
+  <script src="../resus.js"></script>
+</body>
+</html>
