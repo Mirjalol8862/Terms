@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login & Signup Form</title>
+    <link rel="stylesheet" href="../style/login.css" />
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+  </head>
+  <body>
+    <section class="wrapper">
+      <div class="form signup">
+        <header>Signup</header>
+        <form action="#">
+          <input type="text" placeholder="Full name" id="fullName" required />
+          <input type="text" placeholder="Email address" id="email" required />
+          <input type="password" placeholder="Password" id="password" required />
+          <input type="text" placeholder="Phone number" id="phone" required />
+          <div class="checkbox">
+            <input type="checkbox" id="signupCheck" />
+            <label for="signupCheck">I accept all terms & conditions</label>
+          </div>
+          <input type="submit" value="Signup" />
+          <div id="g_id_signup" class="google-btn-wrapper"></div>
+        </form>
+      </div>
+
+      <div class="form login">
+        <header>Login</header>
+        <form action="#">
+          <input type="text" placeholder="Email address" id="loginEmail" required />
+          <input type="password" placeholder="Password" id="loginPassword" required />
+          <a href="#">Forgot password?</a>
+          <input type="submit" value="Login" />
+          <div id="g_id_login" class="google-btn-wrapper"></div>
+        </form>
+      </div>
+    </section>
+
+    <script src="../qwert.js"></script>
+  </body>
+</html>
