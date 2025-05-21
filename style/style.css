@@ -369,3 +369,133 @@ a {
     flex-direction: column;
 }
 /* Catalog - End */
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  color: #636363;
+}
+
+.container {
+  max-width: 360px;
+  margin: auto;
+  padding: 20px;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 1px solid #ddd;
+  font-size: 28px;
+}
+
+.topbar h1 {
+  flex: 1;
+  text-align: center;
+  margin: 0;
+  font-size: 20px;
+}
+
+.avatar {
+  background-color: #6a0dad;
+  color: white;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 32px;
+  margin: 20px auto 10px;
+}
+
+.name,
+.phone {
+  text-align: center;
+  margin: 4px 0;
+
+}
+
+.phone {
+  font-size: 20px;
+  margin-bottom: 26px;
+}
+
+.topbar {
+  color: #1f1f1f;
+}
+
+.name {
+  color: #1f1f1f;
+  font-size: 24px;
+  margin-bottom: 6px;
+  margin-top: 16px;
+}
+
+.edit-btn {
+  display: block;
+  margin: 10px auto;
+  padding: 8px 16px;
+  background-color: #efefef;
+  color: #636363;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.section {
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+.section h3 {
+  font-size: 20px;
+  color: #1f1f1f;
+  margin-bottom: 6px;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0;
+  border-bottom: 1px solid #f0f0f0;
+  cursor: pointer;
+}
+
+.logout-btn {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  margin-top: 20px;
+  background-color: #EFEFEF;
+  border: none;
+  border-radius: 10px;
+  color: #7F7F7F;
+  cursor: not-allowed;
+  font-size: 18px;
+}
+
+.delete-account {
+  color: red;
+  text-align: center;
+  margin-top: 20px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.version {
+  text-align: center;
+  margin-top: 20px;
+  color: #888;
+  font-size: 14px;
+}
+
+.seting-sty {
+  display: flex;
+  align-items: center;
+  column-gap: 16px;
+}
